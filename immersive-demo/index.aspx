@@ -44,7 +44,7 @@
     <div id="do-test-modal" class="ui modal">
         <i class="close icon"></i>
         <div class="header">
-            Become a community preparedness champion
+            Become a community ambassoder
         </div>
         <div class="content">
             <form class="ui form">
@@ -55,10 +55,6 @@
                 <div class="field">
                     <label>Last Name</label>
                     <input type="text" name="last-name" placeholder="Last Name">
-                </div>
-                <div class="field">
-                    <label>Location</label>
-                    <input type="text" name="location" placeholder="Location">
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
@@ -87,7 +83,7 @@
 
     <script>
         function initMap() {
-            var myLatLng = { lat: -37.7993756, lng: 144.9528867 };
+            var myLatLng = { lat: -25.363, lng: 131.044 };
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
@@ -135,13 +131,12 @@
                 console.log('color', color);
 
                 $.ajax({
-                    url: 'https://api.lifx.com/v1/lights/d073d503a318/state',
+                    url: 'https://api.lifx.com/v1/lights/d073d5331586/state',
                     type: 'PUT',
                     data: {
                         "power": "on",
                         "fast": false,
-                        "color": "green",
-                        "brightness": 1,
+                        "color": color
                     },
                     success: function (result) {
                         console.log('success', result);
@@ -149,7 +144,7 @@
                         // Do something with the result
                     },
                     beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Bearer cf5fb83aea43a177249b77a2c43ca7a76c1e11246c0aaca6b1351b234e933211');
+                        xhr.setRequestHeader('Authorization', 'Bearer c47b609e23b90e6f83d3544b83690cc9bd8c3106f72c4dbc5aaf0b921e5cbc98');
                     }
                 });
             }
@@ -161,7 +156,7 @@
             $('.js-submit-form').click(function () {
                 $('.ui.modal').modal('close');
 
-                var bendigoLatLong = { lat: -36.1240938, lng: 146.8817639 };
+                var bendigoLatLong = { lat: -37.5621587, lng: 143.6302556 };
                 var bendigo = new google.maps.Marker({
                     position: bendigoLatLong,
                     map: map,
